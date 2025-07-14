@@ -4,21 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise tracker</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-    <h2>Add User</h2>
-    <form action="/api/users" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <button type="submit">Add User</button>
-    </form>
+    <div class="container">
+        <h1>🏋️ Exercise Tracker</h1>
 
-    <h2>Add Exercise</h2>
-    <form action="/api/users/68750ed579047380a44cd2e5/exercises" method="post">
-        <input type="text" id="description" name="description" placeholder="Description" required>
-        <input type="number" id="duration" name="duration" placeholder="Duration (minutes)" required>
-        <input type="date" id="date" name="date">
-        <button type="submit">Add Exercise</button>
-    </form>
+        <section class="card">
+            <h2>Create New User</h2>
+            <form action="/api/users" method="POST">
+                <input type="text" name="username" placeholder="Enter username" required>
+                <button type="submit">Create User</button>
+
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Add Exercise</h2>
+            <form id="exercise-form">
+                <input type="text" name="userId" placeholder="User ID" required>
+                <input type="text" name="description" placeholder="Workout description" required>
+                <input type="number" name="duration" placeholder="Duration (min)" required>
+                <input type="date" name="date" placeholder="Date (YYYY-MM-DD)" >
+                <button type="submit">Log Exercise</button>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>View Logs</h2>
+            <form id="log-form">
+                <input type="text" name="userId" placeholder="User ID" required>
+                <input type="date" name="from">
+                <input type="date" name="to">
+                <input type="number" name="limit" placeholder="Limit (optional)">
+                <button type="submit">Get Logs</button>
+            </form>
+            <div id="log-results"></div>
+        </section>
+    </div>
 </body>
 </html>
