@@ -6,11 +6,19 @@
     <title>Exercise tracker</title>
 </head>
 <body>
-    <h1>Exercise Tracker</h1>
+    <h2>Add User</h2>
     <form action="/api/users" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <button type="submit">Add User</button>
+    </form>
+
+    <h2>Add Exercise</h2>
+    <form action="/api/users/68750ed579047380a44cd2e5/exercises" method="post">
+        <input type="text" id="description" name="description" placeholder="Description" required>
+        <input type="number" id="duration" name="duration" placeholder="Duration (minutes)" required>
+        <input type="date" id="date" name="date">
+        <button type="submit">Add Exercise</button>
     </form>
 </body>
 </html>
