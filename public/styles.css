@@ -122,7 +122,6 @@ button:active {
     font-family: monospace;
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
     body {
         padding: 1rem;
@@ -139,7 +138,7 @@ button:active {
     }
 
     button {
-        width: 100%;
+        width: 90%;
         margin: 0.5rem 0;
     }
 
