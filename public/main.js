@@ -74,7 +74,7 @@ document
 
     const logContainer = document.getElementById("log-results");
     logContainer.innerHTML = `
-      <h3>${result.username}'s Log</h3>
+      <h3>${result.username}'s Logs/h3>
       <ul>
         ${result.log
           .map(

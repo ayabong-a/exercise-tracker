@@ -2,18 +2,26 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Exercise = require("../models/Exercise");
+const mongoose = require("mongoose");
 
 const errorMessages = {
   userNotFound: "User not found",
   usernameRequired: "Username is required",
   serverError: "Server error",
+  invalidIdFormat: "Invalid user ID format.",
 };
+
+function validateIdFormat(userId, res) {
+  if (!mongoose.Types.ObjectId.isValid(userId)) {
+    return res.status(400).json({ error: errorMessages.invalidIdFormat });
+  }
+}
 
 router.post("/", async (req, res) => {
   try {
     const { username } = req.body;
     if (!username) {
-      return res.status(400).json({ error: errorMessages.usernameRequired })
+      return res.status(400).json({ error: errorMessages.usernameRequired });
     }
 
     const newUser = new User({ username });
@@ -41,6 +49,8 @@ router.post("/:id/exercises", async (req, res) => {
   try {
     const userId = req.params.id;
     const { description, duration, date } = req.body;
+
+    validateIdFormat(userId, res);
 
     const user = await User.findById(userId);
     if (!user) {
@@ -72,6 +82,8 @@ router.get("/:id/logs", async (req, res) => {
   try {
     const userId = req.params.id;
     const { from, to, limit } = req.query;
+
+    validateIdFormat(userId, res);
 
     const user = await User.findById(userId);
     if (!user) {
