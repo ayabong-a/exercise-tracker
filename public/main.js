@@ -69,12 +69,12 @@ document
     const result = await res.json();
     showMessage(
       "success",
-      `Showing ${result.count} logs for ${result.username}`
+      `Showing logs for ${result.username}`
     );
 
     const logContainer = document.getElementById("log-results");
     logContainer.innerHTML = `
-      <h3>${result.username}'s Log (${result.count} entries)</h3>
+      <h3>${result.username}'s Log</h3>
       <ul>
         ${result.log
           .map(
