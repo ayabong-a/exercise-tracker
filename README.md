@@ -1,6 +1,6 @@
 # Exercise Tracker
 
-**Live Demo:** []()
+**View Demo:** [https://exercise-tracker-vfzo.onrender.com](https://exercise-tracker-vfzo.onrender.com)
 
 A full-stack web application that allows users to create an account, log exercises, and view their exercise history with filters.
 
