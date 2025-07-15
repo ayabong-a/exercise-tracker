@@ -9,16 +9,17 @@
 <body>
     <div class="container">
         <div id="message" class="message hidden"></div>
-        
+
         <h1>🏋️ Exercise Tracker</h1>
 
         <section class="card">
             <h2>Create New User</h2>
-            <form action="/api/users" method="POST">
+            <form id="user-form" action="/api/users" method="POST">
                 <input type="text" name="username" placeholder="Enter username" required>
                 <button type="submit">Create User</button>
 
             </form>
+            <div id="user-result" class="user-result"></div>
         </section>
 
         <section class="card">

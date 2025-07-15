@@ -88,3 +88,34 @@ document
       </ul>
     `;
   });
+
+document
+  .getElementById("user-form")
+  .addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(this);
+    const username = formData.get("username");
+
+    const res = await fetch("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username }),
+    });
+
+    if (!res.ok) {
+      const error = await res.json();
+      showMessage("error", error.error || "Failed to create user");
+      return;
+    }
+
+    const result = await res.json();
+    showMessage("success", `User ${result.username} created successfully`);
+
+    document.getElementById("user-result").innerHTML = `
+    <p><strong>Username:</strong> ${result.username}</p>
+    <p><strong>User ID:</strong> <code>${result._id}</code></p>
+  `;
+
+    this.reset();
+  });
